@@ -1,13 +1,238 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --light: #e7e7ea;
+  --dark: #080809;
+  --black: #000;
+
+  --gray: #9e9ea0;
+  --gray50: #707382;
+  --gray100: #3f4044;
+  --dark-gray: #242424;
+
+  --blue: #578cf5;
+  --dark-blue: #2b3145;
+
+  --danger: #db5353;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  background-color: var(--black);
+  color: var(--light);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.6rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+h5 {
+  font-weight: 500;
+}
+
+a {
+  color: var(--blue);
+}
+
+button {
+  background-color: var(--blue);
+  border: none;
+  border-radius: 0.4rem;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--light);
+  outline: none;
+}
+
+button:active {
+  opacity: 0.8;
+  transition: opacity 200ms;
+}
+
+button:focus-visible {
+  opacity: 0.8;
+}
+
+button:disabled {
+  opacity: 0.3;
+  font-weight: 400;
+  cursor: context-menu;
+}
+
+button[type='submit'] {
+  margin-bottom: 2rem;
+}
+
+.app {
+  display: flex;
+  width: min(95vw, 120rem);
+  height: 95vh;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.left-side,
+.right-side {
+  padding: 2rem;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30rem;
+  background-color: var(--dark);
+  text-align: center;
+  line-height: 1.5em;
+  font-weight: 500;
+}
+
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--dark-gray);
+  overflow-y: auto;
+}
+
+.right-side .inner-container {
+  max-height: 100%;
+}
+
+.left-side h2 {
+  margin-bottom: 1.5rem;
+  font-size: 3.4rem;
+  font-weight: 500;
+}
+
+.right-side .subtitle {
+  margin-bottom: 4rem;
+  color: var(--gray);
+}
+
+.error-message {
+  color: var(--danger);
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.form-control {
+  margin-bottom: 2rem;
+}
+
+.form-control.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.form-control label {
+  display: inline-block;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.form-control label::first-letter {
+  text-transform: capitalize;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+select {
+  display: block;
+  width: 100%;
+  border-radius: 0.4rem;
+  padding: 1rem 1.2rem;
+  background-color: transparent;
+  border: solid 0.1rem currentColor;
+  color: var(--gray);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+.user-agreement {
+  display: inline-block;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.checkbox-container label {
+  margin: 0;
+  line-height: 1em;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+}
+
+.custom-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  border: 0.15rem solid var(--gray50);
+}
+
+.custom-checkbox span {
+  font-size: 1.2rem;
+  transform: rotateZ(5deg);
+  transform-origin: center;
+  display: none;
+}
+
+.checkbox-container input[type='checkbox']:checked + label .custom-checkbox {
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+.checkbox-container
+  input[type='checkbox']:checked
+  + label
+  .custom-checkbox
+  span {
+  display: block;
+}
+
+@media (max-width: 676px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .left-side {
+    width: 100%;
+  }
 }
